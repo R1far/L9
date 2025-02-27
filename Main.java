@@ -11,9 +11,9 @@ public class Main {
         System.out.println("Напишите год поступления: ");
         int entranceYear = in.nextInt();
 
-        students[0] = new Student("Александр Васильевич Котов", "01.12.1999", "Улица Лермонтова, г. Пенза", "+79411234567", "1", "Физика");
-        students[1] = new Student("Ольга Дмитриевна Петрова", "15.06.2011", "Улица Красная, г. Пенза", "+7951)9876543", "2", "История искусства");
-        students[2] = new Student("Сергей Иванович Орлов", "05.05.2005", "Улица Советская, г. Пенза", "+79624567890", "3", "Математика");
+        students[0] = new Student("Александр Васильевич Котов", 1999, "Улица Лермонтова, г. Пенза", "+79411234567", "1", "Физика");
+        students[1] = new Student("Ольга Дмитриевна Петрова", 2011, "Улица Красная, г. Пенза", "+7951)9876543", "2", "История искусства");
+        students[2] = new Student("Сергей Иванович Орлов", 2005, "Улица Советская, г. Пенза", "+79624567890", "3", "Математика");
 
         System.out.println("Перечень всех студентов:");
         for (Student student : students) {
@@ -29,8 +29,7 @@ public class Main {
 
         System.out.println("Студенты, поступившие после " + entranceYear + " года:");
         for (Student student : students) {
-            int year = Integer.parseInt(student.getEnrollmentDate().substring(6));  // Извлекаем год из строки
-            if (year > entranceYear) {
+            if (student.getEnrollmentDate() > entranceYear) {
                 System.out.println(student.getName());
             }
         }
@@ -39,13 +38,13 @@ public class Main {
 
 class Student {
     private String name;
-    private String enrollmentDate;
+    private int enrollmentDate;
     private String address;
     private String phoneNumber;
     private String course;
     private String department;
 
-    public Student(String name, String enrollmentDate, String address, String phoneNumber, String course, String department) {
+    public Student(String name, int enrollmentDate, String address, String phoneNumber, String course, String department) {
         this.name = name;
         this.enrollmentDate = enrollmentDate;
         this.address = address;
@@ -62,11 +61,11 @@ class Student {
         this.name = name;
     }
 
-    public String getEnrollmentDate() {
+    public int getEnrollmentDate() {
         return this.enrollmentDate;
     }
 
-    public void setEnrollmentDate(String enrollmentDate) {
+    public void setEnrollmentDate(int enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
     }
 
